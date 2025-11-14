@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,52 +13,71 @@
         body {
             font-family: 'Inter', sans-serif;
             touch-action: manipulation;
-            padding-bottom: 80px; /* Space for the bottom nav */
+            padding-bottom: 80px;
+            /* Space for the bottom nav */
         }
-        .option-button, .lesson-card {
+
+        .option-button,
+        .lesson-card {
             transition: all 0.2s ease-in-out;
         }
-        .option-button:hover, .lesson-card:not(.disabled):hover {
+
+        .option-button:hover,
+        .lesson-card:not(.disabled):hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+
         .correct {
-            background-color: #22c55e !important; /* green-500 */
-            border-color: #16a34a !important; /* green-600 */
+            background-color: #22c55e !important;
+            /* green-500 */
+            border-color: #16a34a !important;
+            /* green-600 */
             color: white !important;
         }
+
         .incorrect {
-            background-color: #ef4444 !important; /* red-500 */
-            border-color: #dc2626 !important; /* red-600 */
+            background-color: #ef4444 !important;
+            /* red-500 */
+            border-color: #dc2626 !important;
+            /* red-600 */
             color: white !important;
         }
+
         .feedback-container-enter-active {
             transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         }
+
         .feedback-container-enter-from {
             opacity: 0;
             transform: translateY(100%);
         }
+
         .feedback-container-enter-to {
             opacity: 1;
             transform: translateY(0);
         }
+
         .disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
+
         .nav-button.active-nav {
-            color: #0d9488; /* teal-600 */
+            color: #0d9488;
+            /* teal-600 */
         }
+
         .xp-bar-progress {
             transition: width 0.5s ease-in-out;
         }
     </style>
 </head>
+
 <body class="bg-slate-100">
 
     <div id="app-container" class="w-full max-w-2xl mx-auto py-8 px-4">
-        
+
         <!-- Contenedor Principal de Pestañas -->
         <div id="main-content">
             <!-- Pestaña de Lecciones -->
@@ -70,14 +90,16 @@
                     <div>
                         <h2 class="text-2xl font-bold text-slate-800 mb-4">Artes Visuales</h2>
                         <div class="space-y-4">
-                            <div id="start-fundamentals-lesson-card" class="lesson-card bg-white p-6 rounded-2xl shadow-md cursor-pointer flex items-center space-x-4">
+                            <div id="start-fundamentals-lesson-card"
+                                class="lesson-card bg-white p-6 rounded-2xl shadow-md cursor-pointer flex items-center space-x-4">
                                 <div class="text-4xl">🎨</div>
                                 <div>
                                     <h3 class="font-bold text-lg text-slate-800">Fundamentos del Arte</h3>
                                     <p class="text-slate-600">Una introducción a los artistas y obras más famosas.</p>
                                 </div>
                             </div>
-                            <div id="start-movements-lesson-card" class="lesson-card bg-white p-6 rounded-2xl shadow-md cursor-pointer flex items-center space-x-4">
+                            <div id="start-movements-lesson-card"
+                                class="lesson-card bg-white p-6 rounded-2xl shadow-md cursor-pointer flex items-center space-x-4">
                                 <div class="text-4xl">🏛️</div>
                                 <div>
                                     <h3 class="font-bold text-lg text-slate-800">Movimientos Artísticos</h3>
@@ -86,22 +108,252 @@
                             </div>
                         </div>
                     </div>
-                     <div>
+                    <div>
                         <h2 class="text-2xl font-bold text-slate-800 mb-4">Música</h2>
                         <div class="space-y-4">
-                            <div class="lesson-card bg-white p-6 rounded-2xl shadow-md flex items-center space-x-4 disabled">
+                            <div id="start-music-theory-lesson-card"
+                                class="lesson-card bg-white p-6 rounded-2xl shadow-md cursor-pointer flex items-center space-x-4">
                                 <div class="text-4xl">🎵</div>
                                 <div>
                                     <h3 class="font-bold text-lg text-slate-800">Teoría Musical Básica</h3>
-                                    <p class="text-slate-600">Aprende sobre notas y escalas. <span class="text-teal-500 font-semibold text-sm">(Próximamente)</span></p>
+                                    <p class="text-slate-600">Aprende sobre notas, escalas y símbolos musicales.</p>
                                 </div>
                             </div>
-                            <div class="lesson-card bg-white p-6 rounded-2xl shadow-md flex items-center space-x-4 disabled">
+                            <div id="start-solfeo-lesson-card"
+                                class="lesson-card bg-white p-6 rounded-2xl shadow-md cursor-pointer flex items-center space-x-4">
                                 <div class="text-4xl">🎼</div>
                                 <div>
                                     <h3 class="font-bold text-lg text-slate-800">Solfeo para Principiantes</h3>
-                                    <p class="text-slate-600">Entrena tu oído y lectura musical. <span class="text-teal-500 font-semibold text-sm">(Próximamente)</span></p>
+                                    <p class="text-slate-600">Aprende a leer partituras y símbolos musicales.</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sección de recursos movida a la pestaña 'Aprender' -->
+                </main>
+            </div>
+
+            <!-- Pestaña Aprender (mejorada) -->
+            <div id="learn-tab" class="hidden">
+                <header class="text-center mb-4">
+                    <h1 class="text-3xl font-bold text-slate-800">Aprender — Explora por tema</h1>
+                    <p class="text-slate-500 mt-1">Selecciona un tema y profundiza con explicaciones, ejemplos y
+                        ejercicios.</p>
+                </header>
+
+                <!-- Navegación interna de la pestaña Aprender -->
+                <nav class="flex gap-2 mb-4 justify-center">
+                    <button data-learn="history"
+                        class="learn-tab-btn px-3 py-2 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700">Historia</button>
+                    <button data-learn="music"
+                        class="learn-tab-btn px-3 py-2 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700">Música</button>
+                    <button data-learn="drawing"
+                        class="learn-tab-btn px-3 py-2 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700">Dibujo</button>
+                    <button data-learn="resources"
+                        class="learn-tab-btn px-3 py-2 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700">Recursos</button>
+                </nav>
+
+                <main>
+                    <div id="learn-history" class="learn-section bg-white p-6 rounded-2xl shadow-md">
+                        <h2 class="text-xl font-bold mb-2">Historia del Arte — Visión ampliada</h2>
+                        <p class="text-slate-600 mb-3">Cronología, estilos y pistas prácticas para reconocer y analizar
+                            obras.</p>
+
+                        <h3 class="font-semibold">Gótico</h3>
+                        <p class="text-slate-600">Siglos XII–XVe. Arquitectura verticalizada, vidrieras y énfasis en lo
+                            espiritual. Observa catedrales y manuscritos iluminados.</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Puntos clave: arcos apuntados, bóvedas de crucería, narración en imágenes.</li>
+                            <li>Ejercicio: identifica 2 elementos góticos en una imagen de catedral.</li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-4">Renacimiento</h3>
+                        <p class="text-slate-600">Siglos XV–XVI. Humanismo, anatomía, perspectiva lineal y búsqueda de
+                            equilibrio (Leonardo, Rafael, Miguel Ángel).</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Puntos clave: proporción, perspectiva y composición equilibrada.</li>
+                            <li>Ejercicio: encuentra el punto de fuga en un retrato o escena arquitectónica.</li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-4">Barroco</h3>
+                        <p class="text-slate-600">Siglos XVII–XVIII. Emoción, movimiento y claroscuro (Caravaggio,
+                            Velázquez, Rubens).</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Puntos clave: luz direccional, composición dinámica, teatralidad.</li>
+                            <li>Ejercicio: describe cómo la luz guía tu mirada en una obra barroca.</li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-4">Neoclasicismo y Romanticismo</h3>
+                        <p class="text-slate-600">Finales XVIII–XIX. Neoclasicismo recupera la claridad clásica;
+                            Romanticismo prioriza emoción y naturaleza (Géricault, Turner).</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Puntos clave: idealización vs. emoción intensa.</li>
+                            <li>Ejercicio: compara una escena neoclásica con una romántica: ¿qué emociones provocan?
+                            </li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-4">Impresionismo y Post-impresionismo</h3>
+                        <p class="text-slate-600">Finales del XIX. Interés en la luz y color, pincelada visible (Monet,
+                            Renoir, Van Gogh, Seurat).</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Puntos clave: color percibido, pincelada suelta, técnicas alternativas como puntillismo.
+                            </li>
+                            <li>Ejercicio: reproduce con 6 trazos la atmósfera de una postal (foco en color, no
+                                detalle).</li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-4">Vanguardias del siglo XX</h3>
+                        <p class="text-slate-600">Cubismo, Futurismo, Surrealismo y más: ruptura de la representación
+                            tradicional y experimentación formal (Picasso, Dalí, Duchamp).</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Puntos clave: fragmentación, automatismo, énfasis conceptual.</li>
+                            <li>Ejercicio: busca una obra cubista y describe 3 elementos que rompen la perspectiva
+                                tradicional.</li>
+                        </ul>
+                    </div>
+
+                    <div id="learn-music" class="learn-section hidden bg-white p-6 rounded-2xl shadow-md">
+                        <h2 class="text-xl font-bold mb-2">Música — Fundamentos y práctica</h2>
+                        <p class="text-slate-600 mb-3">Teoría, entrenamiento auditivo y ejercicios aplicables a
+                            instrumento o voz.</p>
+
+                        <h3 class="font-semibold">Intervalos y entrenamiento auditivo</h3>
+                        <p class="text-slate-600">Intervalo = distancia entre dos notas. Practica reconociendo: segunda,
+                            tercera, cuarta, quinta, octava.</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Ejercicio: tararea la tónica, luego sube la tercera; repite hasta distinguir
+                                mayor/menor.</li>
+                            <li>Consejo: usa aplicaciones de entrenamiento auditivo o ejemplos en <span
+                                    class="text-teal-600">MusicTheory.net</span>.</li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-3">Melodía y fraseo</h3>
+                        <p class="text-slate-600">La melodía es una secuencia de notas con sentido. Observa fraseos,
+                            repeticiones y motivos.</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Ejercicio: toma una canción simple y divide la melodía en 2 frases; canta la segunda
+                                frase replicando la entonación.</li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-3">Armonía y progresiones</h3>
+                        <p class="text-slate-600">Armonía: combinación de notas simultáneas. Aprende las funciones
+                            (tónica, subdominante, dominante).</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Ejercicio: en Do mayor, toca o identifica C (I), F (IV) y G (V). Observa cómo G 'pide'
+                                volver a C.</li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-3">Ritmo y métrica</h3>
+                        <p class="text-slate-600">El ritmo organiza el tiempo. Practica con palmas, subdivisiones y
+                            diferentes compases.</p>
+                        <ul class="list-disc pl-5 mt-2 text-slate-600">
+                            <li>Ejercicio: marca 4/4 y luego acentúa el segundo y cuarto tiempo; escucha la sensación.
+                            </li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-3">Notación básica</h3>
+                        <p class="text-slate-600">Claves, notas y valores rítmicos. Aprende a leer una partitura simple.
+                        </p>
+                        <p class="text-sm text-slate-500 mt-3">Recursos: <a href="https://www.musictheory.net/"
+                                target="_blank" rel="noopener"
+                                class="text-teal-600 hover:underline">MusicTheory.net</a>, <a href="https://imslp.org/"
+                                target="_blank" rel="noopener" class="text-teal-600 hover:underline">IMSLP</a></p>
+                    </div>
+
+                    <div id="learn-drawing" class="learn-section hidden bg-white p-6 rounded-2xl shadow-md">
+                        <h2 class="text-xl font-bold mb-2">Dibujo — Observación y técnica</h2>
+                        <p class="text-slate-600 mb-3">De lo básico a conceptos intermedios: contorno, perspectiva,
+                            composición y sombreados.</p>
+
+                        <h3 class="font-semibold">Gesture & contorno</h3>
+                        <p class="text-slate-600">Ejercicio rápido: 1–2 minutos por pose. Captura la energía y la línea
+                            principal (gesto).</p>
+
+                        <h3 class="font-semibold mt-3">Proporciones y figura humana</h3>
+                        <p class="text-slate-600">Reglas simples: la cabeza como unidad de medida (adulto ≈ 7–8
+                            cabezas). Practica bloques y formas simples antes del detalle.</p>
+
+                        <h3 class="font-semibold mt-3">Perspectiva</h3>
+                        <p class="text-slate-600">Un punto de fuga (lineal) para escenas simples; dos puntos para
+                            objetos en ángulo. Ejercicio: dibuja una carretera que se aleja al horizonte con un punto de
+                            fuga.</p>
+
+                        <h3 class="font-semibold mt-3">Luz, sombra y texturas</h3>
+                        <p class="text-slate-600">Practica hachurado, cross-hatching y degradados para representar
+                            volumen. Observa la transición de luz a sombra.</p>
+
+                        <h3 class="font-semibold mt-3">Composición</h3>
+                        <p class="text-slate-600">Regla de tercios, líneas guía y puntos de interés. Ejercicio: compón
+                            una mini escena usando la regla de tercios.</p>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="p-3 bg-slate-50 rounded-md">
+                                <strong class="block mb-2">Mini-práctica:</strong>
+                                <ol class="list-decimal pl-5 text-slate-600">
+                                    <li>60s: gesture drawing</li>
+                                    <li>3 min: contorno + proporciones</li>
+                                    <li>5 min: añadir luz y sombra</li>
+                                </ol>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-md">
+                                <svg width="140" height="80" viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"
+                                    class="rounded-md">
+                                    <rect x="2" y="2" width="136" height="76" rx="8" fill="#fff" stroke="#e6eef6" />
+                                    <line x1="10" y1="70" x2="130" y2="30" stroke="#cbd5e1" stroke-width="2" />
+                                    <circle cx="40" cy="40" r="10" stroke="#94a3b8" stroke-width="2" fill="#f8fafc" />
+                                    <rect x="80" y="20" width="40" height="30" rx="4" stroke="#94a3b8" stroke-width="2"
+                                        fill="#f8fafc" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="learn-resources" class="learn-section hidden bg-white p-6 rounded-2xl shadow-md">
+                        <h2 class="text-xl font-bold mb-2">Recursos recomendados y lecturas</h2>
+                        <p class="text-slate-600 mb-3">Selección curada de sitios, libros y canales para profundizar por
+                            tema.</p>
+                        <div class="grid gap-3 md:grid-cols-2">
+                            <div>
+                                <h4 class="font-semibold">Historia</h4>
+                                <ul class="list-disc pl-5 text-slate-600 space-y-1">
+                                    <li><a class="text-teal-600 hover:underline"
+                                            href="https://www.khanacademy.org/humanities/art-history" target="_blank"
+                                            rel="noopener">Khan Academy — Historia del Arte</a></li>
+                                    <li><a class="text-teal-600 hover:underline" href="https://smarthistory.org/"
+                                            target="_blank" rel="noopener">Smarthistory</a></li>
+                                    <li><a class="text-teal-600 hover:underline" href="https://www.metmuseum.org/"
+                                            target="_blank" rel="noopener">The Met — Colecciones</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Música</h4>
+                                <ul class="list-disc pl-5 text-slate-600 space-y-1">
+                                    <li><a class="text-teal-600 hover:underline" href="https://www.musictheory.net/"
+                                            target="_blank" rel="noopener">MusicTheory.net</a></li>
+                                    <li><a class="text-teal-600 hover:underline" href="https://imslp.org/"
+                                            target="_blank" rel="noopener">IMSLP — Partituras</a></li>
+                                    <li><a class="text-teal-600 hover:underline" href="https://www.coursera.org/"
+                                            target="_blank" rel="noopener">Coursera — Cursos</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Dibujo y técnica</h4>
+                                <ul class="list-disc pl-5 text-slate-600 space-y-1">
+                                    <li><a class="text-teal-600 hover:underline" href="https://drawabox.com/"
+                                            target="_blank" rel="noopener">Drawabox — Ejercicios de dibujo</a></li>
+                                    <li><a class="text-teal-600 hover:underline" href="https://www.proko.com/"
+                                            target="_blank" rel="noopener">Proko — Lecciones de figura humana</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Canales y multimedia</h4>
+                                <ul class="list-disc pl-5 text-slate-600 space-y-1">
+                                    <li><a class="text-teal-600 hover:underline" href="https://www.youtube.com/"
+                                            target="_blank" rel="noopener">YouTube — Canales educativos</a></li>
+                                    <li><a class="text-teal-600 hover:underline"
+                                            href="https://artsandculture.google.com/" target="_blank"
+                                            rel="noopener">Google Arts & Culture</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -126,7 +378,8 @@
                         <div>
                             <p class="text-sm font-medium text-slate-600 mb-1">Progreso de Nivel</p>
                             <div class="w-full bg-slate-200 rounded-full h-4">
-                                <div id="xp-bar" class="xp-bar-progress bg-teal-500 h-4 rounded-full" style="width: 0%"></div>
+                                <div id="xp-bar" class="xp-bar-progress bg-teal-500 h-4 rounded-full" style="width: 0%">
+                                </div>
                             </div>
                             <p id="xp-text" class="text-right text-sm text-slate-500 mt-1"></p>
                         </div>
@@ -135,7 +388,7 @@
                     <div class="bg-white p-6 rounded-2xl shadow-md">
                         <h3 class="text-xl font-bold text-slate-800 mb-4">Clasificación de Amigos</h3>
                         <ul id="friends-list" class="space-y-4">
-                           <!-- Amigos se generan aquí -->
+                            <!-- Amigos se generan aquí -->
                         </ul>
                     </div>
                 </main>
@@ -146,16 +399,22 @@
         <div id="lesson-screen" class="hidden">
             <div class="flex items-center gap-4 mb-4">
                 <button id="back-to-home-button" class="text-slate-500 hover:text-slate-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
                 </button>
                 <div class="w-full bg-slate-200 rounded-full h-4">
-                    <div id="progress-bar" class="bg-teal-500 h-4 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    <div id="progress-bar" class="bg-teal-500 h-4 rounded-full transition-all duration-300"
+                        style="width: 0%"></div>
                 </div>
             </div>
             <div id="question-content" class="bg-white p-6 rounded-2xl shadow-md">
                 <h2 id="question-title" class="text-xl md:text-2xl font-bold text-slate-800 mb-4"></h2>
                 <div class="mb-4">
-                    <img id="question-image" src="" alt="Obra de arte" class="rounded-xl w-full max-h-96 object-contain mx-auto shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Arte';">
+                    <img id="question-image" src="" alt="Obra de arte"
+                        class="rounded-xl w-full max-h-96 object-contain mx-auto shadow-sm"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Arte';">
                 </div>
                 <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
             </div>
@@ -168,15 +427,20 @@
             <p class="text-slate-600 text-lg mb-6">Tu puntuación final es:</p>
             <div id="final-score" class="text-6xl font-bold text-slate-800 mb-8"></div>
             <div class="space-y-3">
-                <button id="restart-button" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-4 rounded-2xl text-xl shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1">Volver a Intentar</button>
-                <button id="home-button" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-4 px-4 rounded-2xl text-xl">Volver al Inicio</button>
+                <button id="restart-button"
+                    class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-4 rounded-2xl text-xl shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1">Volver
+                    a Intentar</button>
+                <button id="home-button"
+                    class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-4 px-4 rounded-2xl text-xl">Volver
+                    al Inicio</button>
             </div>
         </div>
     </div>
 
     <!-- Contenedor de Feedback -->
     <div id="feedback-container" class="fixed bottom-0 left-0 right-0 p-4 hidden z-20">
-        <div id="feedback-card" class="max-w-2xl mx-auto p-5 rounded-t-2xl shadow-2xl transition-transform duration-300">
+        <div id="feedback-card"
+            class="max-w-2xl mx-auto p-5 rounded-t-2xl shadow-2xl transition-transform duration-300">
             <div class="flex items-center mb-3">
                 <div id="feedback-icon" class="mr-3 text-2xl"></div>
                 <h3 id="feedback-title" class="text-2xl font-bold"></h3>
@@ -189,17 +453,37 @@
     <!-- Barra de Navegación Inferior -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-10">
         <div class="flex justify-around max-w-2xl mx-auto">
-            <button data-tab="lessons" class="nav-button flex-1 flex flex-col items-center p-3 text-slate-500 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
+            <button data-tab="lessons"
+                class="nav-button flex-1 flex flex-col items-center p-3 text-slate-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
                 <span class="text-xs font-medium">Lecciones</span>
             </button>
-            <button data-tab="profile" class="nav-button flex-1 flex flex-col items-center p-3 text-slate-500 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+            <button data-tab="learn"
+                class="nav-button flex-1 flex flex-col items-center p-3 text-slate-500 transition-colors"
+                aria-label="Aprender">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor">
+                    <path d="M12 2v6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M5 7h14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M4 22h16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M7 11c2 2 5 2 7 0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="text-xs font-medium">Aprender</span>
+            </button>
+            <button data-tab="profile"
+                class="nav-button flex-1 flex flex-col items-center p-3 text-slate-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd" />
+                </svg>
                 <span class="text-xs font-medium">Perfil</span>
             </button>
         </div>
     </nav>
-    
+
     <script>
         // --- DATOS DE LAS LECCIONES ---
         const fundamentalsLessonData = [
@@ -209,13 +493,29 @@
             { question: "¿Quién es el autor de esta escultura de 'David'?", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Michelangelo%27s_David_2015.jpg/800px-Michelangelo%27s_David_2015.jpg", options: ["Donatello", "Leonardo da Vinci", "Rafael", "Miguel Ángel"], correctAnswer: "Miguel Ángel", explanation: "Esta obra maestra del Renacimiento fue esculpida en mármol por el artista italiano Miguel Ángel entre 1501 y 1504." },
             { question: "¿Cómo se llama esta famosa pintura de Leonardo da Vinci?", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg", options: ["La Dama del Armiño", "La Gioconda (Mona Lisa)", "La Virgen de las Rocas", "Ginebra de Benci"], correctAnswer: "La Gioconda (Mona Lisa)", explanation: "También conocida como Mona Lisa, La Gioconda es el retrato más famoso del mundo, pintado por Leonardo da Vinci en el siglo XVI." }
         ];
-        
+
         const artMovementsLessonData = [
             { question: "Este dibujo, 'El Hombre de Vitruvio', es un ícono del...", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg/800px-Da_Vinci_Vitruve_Luc_Viatour.jpg", options: ["Barroco", "Renacimiento", "Gótico", "Rococó"], correctAnswer: "Renacimiento", explanation: "El Hombre de Vitruvio de Leonardo da Vinci es un estudio de las proporciones del cuerpo humano y un símbolo del humanismo renacentista." },
             { question: "'Impresión, sol naciente' de Claude Monet dio nombre al movimiento...", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg", options: ["Expresionismo", "Fauvismo", "Impresionismo", "Puntillismo"], correctAnswer: "Impresionismo", explanation: "Esta obra de 1872 fue la que, de forma un tanto peyorativa por un crítico, bautizó al movimiento impresionista, enfocado en capturar la luz y el instante." },
             { question: "Las formas geométricas y la perspectiva múltiple en 'Les Demoiselles d'Avignon' son características del...", imageUrl: "https://upload.wikimedia.org/wikipedia/en/4/4c/Les_Demoiselles_d%27Avignon.jpg", options: ["Surrealismo", "Fauvismo", "Futurismo", "Cubismo"], correctAnswer: "Cubismo", explanation: "Pintada por Pablo Picasso en 1907, esta obra es fundamental para el desarrollo del Cubismo, rompiendo con la perspectiva tradicional." },
             { question: "La técnica de aplicar pequeños puntos de color para formar una imagen, vista en esta obra de Seurat, se llama...", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg/1280px-A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg", options: ["Impresionismo", "Puntillismo", "Fauvismo", "Cubismo"], correctAnswer: "Puntillismo", explanation: "'Tarde de domingo en la isla de la Grande Jatte' de Georges Seurat es la obra más famosa del puntillismo, una técnica derivada del post-impresionismo." },
             { question: "El uso dramático de la luz y la sombra (claroscuro) y la compleja composición de 'Las Meninas' son característicos del período...", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Las_Meninas%2C_by_Diego_Vel%C3%A1zquez%2C_from_Prado_in_Google_Earth.jpg/1280px-Las_Meninas%2C_by_Diego_Vel%C3%A1zquez%2C_from_Prado_in_Google_Earth.jpg", options: ["Rococó", "Neoclasicismo", "Barroco", "Renacimiento"], correctAnswer: "Barroco", explanation: "'Las Meninas' de Diego Velázquez es una obra cumbre del Barroco español, famosa por su compleja estructura compositiva y su magistral uso de la luz." },
+        ];
+
+        const musicalTheoryLessonData = [
+            { question: "¿Qué acorde se muestra en la imagen?", imageUrl: "https://cresciente.net/wp-content/uploads/2021/11/Do-mayor.png.webp", options: ["Do mayor", "La menor", "Sol mayor", "Fa mayor"], correctAnswer: "Do mayor", explanation: "Este es el acorde de Do mayor (C), formado por las notas Do, Mi y Sol. Es uno de los acordes más básicos y fundamentales en la música." },
+            { question: "¿Qué tipo de acorde es este?", imageUrl: "https://www.skoove.com/blog/wp-content/uploads/2021/08/6mm-300x189.png", options: ["Mayor", "Menor", "Disminuido", "Aumentado"], correctAnswer: "Menor", explanation: "Este es un acorde menor, caracterizado por tener una tercera menor (3 semitonos) entre la fundamental y la tercera del acorde, lo que le da su sonido característico más 'oscuro' o 'triste'." },
+            { question: "¿Qué progresión armónica se muestra?", imageUrl: "https://lh3.googleusercontent.com/jSnfUL-sCkRk234ztagEjxBj9z08A7LK_06EE4d5WXyfRtbpkrzBCWwZqcuQGOHFpvS0ly6Q50s3rXseHjBAaUg5QUWWTFEuV4YrXG_qVncLp65m_hE0WRj08gs6oCgjHbubBsC3r2WFXZRXyYw3zvg", options: ["I-IV-V", "ii-V-I", "I-vi-IV-V", "IV-V-vi"], correctAnswer: "I-IV-V", explanation: "Esta es la progresión I-IV-V, una de las más comunes en música popular. En Do mayor sería C-F-G, una base para muchas canciones." },
+            { question: "¿Qué función armónica cumple este acorde en Do mayor?", imageUrl: "https://raw.githubusercontent.com/dan-ramirez-dev/ArteLingo/refs/heads/main/acorde%20sol.png", options: ["Tónica", "Subdominante", "Dominante", "Mediante"], correctAnswer: "Dominante", explanation: "Este es el acorde de Sol (G), que en la tonalidad de Do mayor cumple la función de dominante (V grado), creando tensión que busca resolver a la tónica." },
+            { question: "¿Cuántas notas tiene una tríada básica (acorde simple)?", imageUrl: "https://cresciente.net/wp-content/uploads/2021/11/Do-mayor.png.webp", options: ["2", "3", "4", "5"], correctAnswer: "3", explanation: "Una tríada está formada por tres notas: la fundamental, la tercera y la quinta. Es la forma más básica de acorde." }
+        ];
+
+        const solfeoLessonData = [
+            { question: "¿Qué nota musical representa esta figura en clave de sol?", imageUrl: "https://raw.githubusercontent.com/dan-ramirez-dev/ArteLingo/refs/heads/main/Do%20central.png", options: ["La", "Si", "Do central", "Re"], correctAnswer: "Do central", explanation: "Esta nota en la primera línea adicional inferior de la clave de sol representa el Do central (C4), una nota fundamental en la música." },
+            { question: "¿Qué tipo de compás muestra esta partitura?", imageUrl: "https://raw.githubusercontent.com/dan-ramirez-dev/ArteLingo/refs/heads/main/weezer%204%20cuartos.png", options: ["2/4", "3/4", "4/4", "6/8"], correctAnswer: "4/4", explanation: "Este es el compás de 4/4, también llamado 'compás común'. Significa que hay 4 tiempos por compás y que la negra vale un tiempo." },
+            { question: "¿Qué figura musical es esta?", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCQVnN-bly4n5JAI-OszHIf_zbDatDzVtqEEj5-xMGpRu8fObIxelj3BhJOB1lUJTeDrM", options: ["Redonda", "Blanca", "Negra", "Corchea"], correctAnswer: "Negra", explanation: "Esta es una negra, que en un compás de 4/4 vale un tiempo. Es una de las figuras más comunes en la música." },
+            { question: "¿Qué indica este símbolo musical?", imageUrl: "https://mcarmenfer.wordpress.com/wp-content/uploads/2010/11/calderc3b3n.gif", options: ["Calderón/Fermata", "Staccato", "Acento", "Tenuto"], correctAnswer: "Calderón/Fermata", explanation: "Este símbolo es un calderón o fermata, que indica que la nota debe sostenerse más tiempo del indicado, a discreción del intérprete." },
+            { question: "¿En qué línea se puede escribir la nota Fa en clave de sol?", imageUrl: "https://raw.githubusercontent.com/dan-ramirez-dev/ArteLingo/refs/heads/main/clave%20sol.png", options: ["Primera línea", "Segunda línea", "Tercera línea", "Quinta línea"], correctAnswer: "Quinta línea", explanation: "En clave de sol, la nota Fa se escribe en la quinta (última) línea del pentagrama." }
         ];
 
         const friendsData = [
@@ -243,13 +543,14 @@
 
         const tabScreens = {
             lessons: document.getElementById('lessons-tab'),
+            learn: document.getElementById('learn-tab'),
             profile: document.getElementById('profile-tab')
         };
-        
+
         const navButtons = document.querySelectorAll('.nav-button');
         const startFundamentalsLessonCard = document.getElementById('start-fundamentals-lesson-card');
         const startMovementsLessonCard = document.getElementById('start-movements-lesson-card');
-        
+
         // Perfil
         const profileName = document.getElementById('profile-name');
         const profileLevel = document.getElementById('profile-level');
@@ -265,12 +566,12 @@
         const feedbackContainer = document.getElementById('feedback-container');
 
         // --- LÓGICA DE LA APP ---
-        
+
         function showTab(tabId) {
             mainContent.classList.remove('hidden');
             lessonScreen.classList.add('hidden');
             completionScreen.classList.add('hidden');
-            
+
             Object.values(tabScreens).forEach(screen => screen.classList.add('hidden'));
             tabScreens[tabId].classList.remove('hidden');
 
@@ -281,20 +582,44 @@
             if (tabId === 'profile') {
                 updateProfileUI();
             }
-        }
-        
-        function updateProfileUI() {
+
+            showChat(); // Mostrar el chat al volver a las pestañas principales
+        } function updateProfileUI() {
             profileName.textContent = userProfile.name;
             profileLevel.textContent = `Nivel ${userProfile.level}`;
             const progressPercentage = (userProfile.xp / userProfile.xpToNextLevel) * 100;
             xpBar.style.width = `${progressPercentage}%`;
             xpText.textContent = `${userProfile.xp} / ${userProfile.xpToNextLevel} XP`;
         }
-        
+
+        // --- INICIALIZADOR Y LÓGICA PARA LA PESTAÑA 'APRENDER' ---
+        function initLearnTab() {
+            const buttons = document.querySelectorAll('.learn-tab-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.learn;
+                    showLearnSection(id);
+                    // marcar activo
+                    buttons.forEach(b => b.classList.remove('bg-teal-50', 'ring', 'ring-teal-200'));
+                    btn.classList.add('bg-teal-50', 'ring', 'ring-teal-200');
+                });
+            });
+            // Mostrar por defecto 'history'
+            const first = document.querySelector('.learn-tab-btn[data-learn="history"]');
+            if (first) { first.click(); }
+        }
+
+        function showLearnSection(sectionId) {
+            const sections = document.querySelectorAll('.learn-section');
+            sections.forEach(s => s.classList.add('hidden'));
+            const el = document.getElementById(`learn-${sectionId}`) || document.getElementById(`learn-${sectionId}`);
+            if (el) el.classList.remove('hidden');
+        }
+
         function renderFriendsList() {
             friendsList.innerHTML = '';
             const sortedFriends = friendsData.sort((a, b) => b.score - a.score);
-            
+
             sortedFriends.forEach((friend, index) => {
                 const li = document.createElement('li');
                 li.className = 'flex items-center justify-between';
@@ -317,12 +642,12 @@
                 userProfile.xpToNextLevel = Math.floor(userProfile.xpToNextLevel * 1.5);
             }
         }
-        
+
         function loadQuestion() {
             feedbackContainer.classList.add('hidden');
-            
+
             const currentQuestion = activeLessonData[currentQuestionIndex];
-            
+
             const progress = ((currentQuestionIndex) / activeLessonData.length) * 100;
             progressBar.style.width = `${progress}%`;
 
@@ -360,7 +685,7 @@
                 showFeedback(false);
             }
         }
-        
+
         function showFeedback(isCorrect) {
             const feedbackCard = document.getElementById('feedback-card');
             const feedbackIcon = document.getElementById('feedback-icon');
@@ -370,7 +695,7 @@
             const currentQuestion = activeLessonData[currentQuestionIndex];
 
             feedbackContainer.classList.remove('hidden');
-            
+
             feedbackContainer.classList.remove('feedback-container-enter-active', 'feedback-container-enter-from', 'feedback-container-enter-to');
             void feedbackContainer.offsetWidth;
 
@@ -389,10 +714,10 @@
             }
             feedbackExplanation.textContent = currentQuestion.explanation;
 
-             setTimeout(() => {
+            setTimeout(() => {
                 feedbackContainer.classList.add('feedback-container-enter-active', 'feedback-container-enter-from');
                 requestAnimationFrame(() => {
-                     feedbackContainer.classList.add('feedback-container-enter-to');
+                    feedbackContainer.classList.add('feedback-container-enter-to');
                 });
             }, 10);
         }
@@ -405,20 +730,20 @@
                 showCompletionScreen();
             }
         }
-        
+
         function showCompletionScreen() {
             lessonScreen.classList.add('hidden');
             feedbackContainer.classList.add('hidden');
             completionScreen.classList.remove('hidden');
-            
+
             const xpGained = score * 25;
             userProfile.xp += xpGained;
             checkLevelUp();
-            
+
             xpGainedText.textContent = `¡+${xpGained} XP!`;
             finalScore.textContent = `${score} / ${activeLessonData.length}`;
         }
-        
+
         function startLesson(lessonData) {
             activeLessonData = lessonData;
             currentQuestionIndex = 0;
@@ -426,6 +751,7 @@
             completionScreen.classList.add('hidden');
             mainContent.classList.add('hidden');
             lessonScreen.classList.remove('hidden');
+            hideChat(); // Ocultar el chat al iniciar lección
             loadQuestion();
         }
 
@@ -435,21 +761,82 @@
                 showTab(button.dataset.tab);
             });
         });
-        
+
         startFundamentalsLessonCard.addEventListener('click', () => startLesson(fundamentalsLessonData));
         startMovementsLessonCard.addEventListener('click', () => startLesson(artMovementsLessonData));
-        
+        document.getElementById('start-music-theory-lesson-card').addEventListener('click', () => startLesson(musicalTheoryLessonData));
+        document.getElementById('start-solfeo-lesson-card').addEventListener('click', () => startLesson(solfeoLessonData));
+
         document.getElementById('restart-button').addEventListener('click', () => startLesson(activeLessonData));
-        document.getElementById('next-button').addEventListener('click', ()=>nextQuestion());
+        document.getElementById('next-button').addEventListener('click', () => nextQuestion());
         document.getElementById('back-to-home-button').addEventListener('click', () => showTab('lessons'));
         document.getElementById('home-button').addEventListener('click', () => showTab('lessons'));
 
 
+        // --- FUNCIONES DEL WIDGET DE CHAT ---
+        function findChatElements() {
+            return {
+                frame: document.querySelector('iframe[id^="chtl-iframe-"]'),
+                button: document.querySelector('button[id^="chtl-launcher-"]'),
+                container: document.querySelector('div[id^="chtl-launcher-container-"]')
+            };
+        }
+
+        function hideChat() {
+            // Intentamos varias veces ya que el widget puede tardar en cargar
+            let attempts = 0;
+            const maxAttempts = 10;
+
+            function attemptHide() {
+                const elements = findChatElements();
+                if (elements.frame || elements.button || elements.container) {
+                    if (elements.frame) elements.frame.style.display = 'none';
+                    if (elements.button) elements.button.style.display = 'none';
+                    if (elements.container) elements.container.style.display = 'none';
+                    // También añadimos CSS para asegurar que se oculte
+                    const style = document.createElement('style');
+                    style.id = 'chat-hide-style';
+                    style.textContent = `
+                        iframe[id^="chtl-iframe-"],
+                        button[id^="chtl-launcher-"],
+                        div[id^="chtl-launcher-container-"] {
+                            display: none !important;
+                            opacity: 0 !important;
+                            visibility: hidden !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                } else if (attempts < maxAttempts) {
+                    attempts++;
+                    setTimeout(attemptHide, 500); // Intentar de nuevo en 500ms
+                }
+            }
+
+            attemptHide();
+        }
+
+        function showChat() {
+            const elements = findChatElements();
+            if (elements.frame) elements.frame.style.display = '';
+            if (elements.button) elements.button.style.display = '';
+            if (elements.container) elements.container.style.display = '';
+            // Removemos el CSS que fuerza el ocultamiento
+            const style = document.getElementById('chat-hide-style');
+            if (style) style.remove();
+        }
+
         // --- INICIALIZACIÓN ---
+        initLearnTab();
         showTab('lessons');
         renderFriendsList();
 
     </script>
+
+    <!-- Widget de Chat Chatling.ai -->
+    <script> window.chtlConfig = { chatbotId: "4484352243" } </script>
+    <script async data-id="4484352243" id="chtl-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
 </body>
+
 </html>
 
